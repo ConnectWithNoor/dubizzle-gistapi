@@ -1,4 +1,4 @@
-import { createGlobalStyle } from 'styled-components';
+import { createGlobalStyle } from "styled-components";
 
 const GlobalStyles = createGlobalStyle`
   body{
@@ -8,6 +8,24 @@ const GlobalStyles = createGlobalStyle`
   }
   *{
     box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+  }
+
+  a{
+    text-transform: none;
+    text-decoration:none;
+  }
+
+  p {
+    color: #555;
+    font-size: 12px;
+    
+    margin-top: 5px;
+  }
+
+  h1,h2,h3,h4,h5,h6,a {
+    color: #2f2ace;
   }
 `;
 
