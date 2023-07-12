@@ -1,11 +1,13 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import App from './App';
+import React from "react";
+import ReactDOM from "react-dom";
+import App from "./App";
+import { GistProvider } from "./store/gistContext";
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <GistProvider>
+      <App />
+    </GistProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
-
