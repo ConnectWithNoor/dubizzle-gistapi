@@ -1,10 +1,5 @@
-import React, {
-  useCallback,
-  useEffect,
-  useState,
-  memo,
-  useContext,
-} from "react";
+/* eslint-disable react-hooks/exhaustive-deps */
+import React, { useCallback, useEffect, memo, useContext } from "react";
 import styled from "styled-components";
 
 import Gist from "./Gist";
@@ -14,9 +9,8 @@ import { gistContext } from "../store/gistContext";
 import { ADD_PUBLIC_GISTS } from "../store/actions";
 
 const GistList = () => {
-  const [isLoading, setIsLoading] = useState(false);
-
-  const { gistList, dispatch, error, setError } = useContext(gistContext);
+  const { gistList, dispatch, error, setError, isLoading, setIsLoading } =
+    useContext(gistContext);
 
   const fetchPublicGists = useCallback(async () => {
     try {
@@ -43,7 +37,7 @@ const GistList = () => {
     } finally {
       setIsLoading(false);
     }
-  }, [dispatch, setError]);
+  }, []);
 
   useEffect(() => {
     fetchPublicGists();

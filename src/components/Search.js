@@ -9,11 +9,12 @@ import { ADD_PUBLIC_GISTS } from "../store/actions";
 const Search = () => {
   const [searchTerm, setSearchTerm] = useState("");
 
-  const { dispatch, setError, isUserGistAlreadyExist } =
+  const { dispatch, setError, isUserGistAlreadyExist, setIsLoading } =
     useContext(gistContext);
 
   const fetchUserGist = useCallback(async () => {
     try {
+      setIsLoading(true);
       setError(null);
       const userGist = await getGistForUser(searchTerm);
       if (userGist?.data) {
@@ -31,8 +32,10 @@ const Search = () => {
       }
     } catch (err) {
       setError(err);
+    } finally {
+      setIsLoading(false);
     }
-  }, [searchTerm, dispatch, setError]);
+  }, [searchTerm]);
 
   useEffect(() => {
     let delayApiCall;

@@ -7,6 +7,7 @@ function GistProvider({ children }) {
   const [gistList, setGistList] = useState([]);
   const [publicGists, dispatch] = useReducer(reducer, []);
   const [error, setError] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   function reducer(state, action) {
     switch (action.type) {
@@ -40,6 +41,8 @@ function GistProvider({ children }) {
         error,
         setError,
         gistList,
+        isLoading,
+        setIsLoading,
       }}
     >
       {children}
